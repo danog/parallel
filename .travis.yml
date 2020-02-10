@@ -19,8 +19,8 @@ env:
 
 install:
   - composer update -n --prefer-dist
-  # ext-pthreads is only supported on PHP 7.2+
-  - if [ "$TRAVIS_PHP_VERSION" != "7.1" ]; then
+  # ext-pthreads is only supported on PHP 7.2 and 7.3
+  - if [ "$TRAVIS_PHP_VERSION" == "7.2"] || ["$TRAVIS_PHP_VERSION" == "7.3" ]; then
       travis/install-pthreads.sh;
     fi
   # ext-parallel is only supported on PHP 7.2+

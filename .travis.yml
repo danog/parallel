@@ -4,14 +4,13 @@ php:
   - 7.1
   - 7.2
   - 7.3
-  - 7.4snapshot
+  - 7.4
   - nightly
 
 sudo: false
 
 matrix:
   allow_failures:
-    - php: 7.4snapshot
     - php: nightly
   fast_finish: true
 
@@ -20,11 +19,14 @@ env:
 
 install:
   - composer update -n --prefer-dist
-  # pthreads is now only supported on PHP 7.2+
+  # ext-pthreads is only supported on PHP 7.2+
   - if [ "$TRAVIS_PHP_VERSION" != "7.1" ]; then
       travis/install-pthreads.sh;
     fi
-  - travis/install-parallel.sh;
+  # ext-parallel is only supported on PHP 7.2+
+  - if [ "$TRAVIS_PHP_VERSION" != "7.1" ]; then
+      travis/install-parallel.sh;
+    fi
   - wget https://github.com/php-coveralls/php-coveralls/releases/download/v1.0.2/coveralls.phar
   - chmod +x coveralls.phar
 

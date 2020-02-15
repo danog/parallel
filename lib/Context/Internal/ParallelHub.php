@@ -23,7 +23,7 @@ class ParallelHub extends IpcHub
 
     public function __construct(int $keyLength = 32)
     {
-        parent::__construct($keyLength);
+        parent::__construct('', $keyLength);
 
         $events = $this->events = new Events;
         $this->events->setBlocking(false);

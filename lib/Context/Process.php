@@ -75,7 +75,7 @@ final class Process implements Context
     {
         $this->hub = Loop::getState(self::class);
         if (!$this->hub instanceof IpcHub) {
-            $this->hub = new IpcHub(self::KEY_LENGTH);
+            $this->hub = new IpcHub('', self::KEY_LENGTH);
             Loop::setState(self::class, $this->hub);
         }
 

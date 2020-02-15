@@ -2,9 +2,9 @@
 
 namespace Amp\Parallel\Context\Internal;
 
-use Amp\Parallel\Sync\IpcHub;
 use Amp\Parallel\Context\Process;
 use Amp\Parallel\Sync;
+use Amp\Parallel\Sync\IpcHub;
 use Amp\Promise;
 use function Amp\call;
 
